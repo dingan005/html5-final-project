@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Full-Stack vs Frontend vs Backend</title>
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#ffffff;
+      --line:#e6e8f0;
+      --ink:#14171f;
+      --muted:#58627a;
+      --brand:#0b57d0;
+      --ok:#16a34a;
+    }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); margin:24px; line-height:1.6}
+    h1,h2,h3{line-height:1.25}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; margin:14px 0}
+    .pill{display:inline-block; padding:4px 10px; border-radius:999px; background:#eef3ff; border:1px solid #dbe6ff; font-size:.85rem}
+    .grid{display:grid; gap:14px}
+    @media (min-width:880px){ .grid-3{grid-template-columns:repeat(3,1fr)} }
+    table{width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden}
+    th,td{padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top}
+    th{background:#f3f5fb}
+    tr:last-child td{border-bottom:none}
+    code{background:#eef1f7; padding:2px 6px; border-radius:6px}
+    .flow{display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:.95rem}
+    .box{border:1px dashed #cfd6e6; background:#fbfcff; padding:10px 12px; border-radius:10px}
+    .tag{font-size:.8rem; color:#fff; background:var(--brand); padding:2px 8px; border-radius:999px}
+    .ok{color:var(--ok); font-weight:600}
+    .muted{color:var(--muted)}
+    .kbd{background:#fff; border:1px solid #cfd6e6; border-bottom-width:2px; padding:0 6px; border-radius:6px}
+    pre{background:#0b1020; color:#eaeefb; padding:12px; border-radius:12px; overflow:auto}
+  </style>
+</head>
+<body>
+
+  <h1>What is Full-Stack, Frontend & Backend?</h1>
+  <p class="muted">Understand how a web app is built end-to-end — from the user’s browser to the database.</p>
+
+  <div class="card">
+    <span class="pill">Quick Definition</span>
+    <ul>
+      <li><strong>Frontend</strong> — Everything the user sees and interacts with in the browser (UI).</li>
+      <li><strong>Backend</strong> — The server side: APIs, business logic, databases, authentication.</li>
+      <li><strong>Full-Stack</strong> — Works on both frontend and backend; connects the whole system.</li>
+    </ul>
+  </div>
+
+  <h2>1) Real-World Analogy</h2>
+  <div class="card grid grid-3">
+    <div>
+      <h3>Frontend (Restaurant Menu)</h3>
+      <p>The menu and table service you see and use.</p>
+      <div class="box">HTML (structure) • CSS (design) • JS (interaction)</div>
+    </div>
+    <div>
+      <h3>Backend (Kitchen)</h3>
+      <p>Where orders are processed and food is prepared.</p>
+      <div class="box">Server • APIs • Business Rules • Database</div>
+    </div>
+    <div>
+      <h3>Full-Stack (Manager/Chef-Waiter)</h3>
+      <p>Understands both menu & kitchen; ensures smooth delivery.</p>
+      <div class="box">Bridges UI ↔ API ↔ DB</div>
+    </div>
+  </div>
+
+  <h2>2) Request → Response Flow</h2>
+  <div class="card">
+    <div class="flow">
+      <div class="box"><strong>User</strong> clicks “Login”</div>
+      ➜
+      <div class="box"><strong>Frontend</strong> sends POST <code>/api/login</code></div>
+      ➜
+      <div class="box"><strong>Backend</strong> checks user, creates token</div>
+      ➜
+      <div class="box"><strong>DB</strong> returns user record</div>
+      ➜
+      <div class="box"><strong>Frontend</strong> shows dashboard ✅</div>
+    </div>
+  </div>
+
+  <h2>3) Typical Tech Stack</h2>
+  <table>
+    <thead>
+      <tr><th>Layer</th><th>Common Tech</th><th>What It Does</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Frontend</td>
+        <td>HTML, CSS, JavaScript, React/Vite</td>
+        <td>UI pages, forms, navigation, validations, state, routing</td>
+      </tr>
+      <tr>
+        <td>Backend</td>
+        <td>Node.js + Express, Python + Django/Flask, Java + Spring</td>
+        <td>APIs, auth (JWT), business logic, security, server-side rendering</td>
+      </tr>
+      <tr>
+        <td>Database</td>
+        <td>MongoDB, PostgreSQL, MySQL</td>
+        <td>Store and query persistent data</td>
+      </tr>
+      <tr>
+        <td>DevOps</td>
+        <td>Git/GitHub, CI/CD, Docker, Cloud</td>
+        <td>Deploy, scale, monitor</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4) Mini Code Glimpse</h2>
+  <div class="card">
+    <p><span class="tag">Frontend</span> Submit a form:</p>
+    <pre>
+// JavaScript (fetch)
+fetch("/api/hello", { method: "GET" })
+  .then(res => res.json())
+  .then(data => console.log(data.message));
+    </pre>
+
+    <p><span class="tag">Backend</span> Simple API (Node + Express):</p>
+    <pre>
+// server.js
+const express = require("express");
+const app = express();
+app.get("/api/hello", (req, res) => res.json({ message: "Hello from backend!" }));
+app.listen(3000);
+    </pre>
+  </div>
+
+  <h2>5) Responsibilities Snapshot</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>Frontend</th><th>Backend</th><th>Full-Stack</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Primary Focus</td>
+        <td>UI/UX, components, performance</td>
+        <td>APIs, security, data modeling</td>
+        <td>End-to-end delivery</td>
+      </tr>
+      <tr>
+        <td>Tools</td>
+        <td>React, Tailwind, Vite</td>
+        <td>Express, Django, ORM</td>
+        <td>Mix of both + Git/CI/CD</td>
+      </tr>
+      <tr>
+        <td>Output</td>
+        <td>Interactive pages</td>
+        <td>Reliable services</td>
+        <td class="ok">Working product</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>6) Quick Q&A</h2>
+  <div class="card">
+    <p><strong>Q:</strong> Can a frontend app work without a backend?<br>
+    <strong>A:</strong> For static sites, yes. For dynamic data/login, it needs an API (backend).</p>
+
+    <p><strong>Q:</strong> Is database part of backend?<br>
+    <strong>A:</strong> Commonly yes; backend talks to the DB.</p>
+
+    <p><strong>Q:</strong> What makes a developer full-stack?<br>
+    <strong>A:</strong> Comfortable building UI + APIs + working with databases and deployments.</p>
+  </div>
+
+  <h2>7) Practice Task</h2>
+  <ol>
+    <li>Write one sentence each to define: Frontend, Backend, Full-Stack.</li>
+    <li>List 3 tools for each layer that you want to learn.</li>
+    <li>Sketch (on paper) the flow: Browser → API → DB → API → Browser.</li>
+  </ol>
+
+
+  <!-- 
+
+    Frontend = browser UI (HTML/CSS/JS, React)
+
+
+    Backend = server logic + APIs + DB access
+
+
+     Full-Stack = both ends, end-to-end delivery
+
+
+     Show request→response flow to connect concepts
+
+
+     Frontend is what users see and click.
+     
+     Backend is the engine that processes requests and talks to the database.
+     
+     A full-stack developer can build both and connect them into one working product.
+     
+  -->
+</body>
+</html>
